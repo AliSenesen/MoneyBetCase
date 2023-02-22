@@ -6,13 +6,13 @@ using Keys;
 using UnityEngine;
 using Signals;
 
-namespace Managers
+namespace Controllers
 {
-    public class PlayerManager : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         private PlayerData _playerData;
-        [SerializeField] private PlayerMovementController _playerMovementController;
-        [SerializeField] PlayerAnimationController playerAnimationController;
+        [SerializeField] private PlayerMovement playerMovement;
+        [SerializeField] PlayerAnimations playerAnimations;
 
 
         private void Awake()
@@ -51,29 +51,29 @@ namespace Managers
 
         private void OnPlay()
         {
-            _playerMovementController.ActivateMovement();
+            playerMovement.ActivateMovement();
             
         }
 
         private void OnDeactivateMovement()
         {
-            _playerMovementController.DeactivateMovement();
-            playerAnimationController.StartIdleAnim();
+            playerMovement.DeactivateMovement();
+            playerAnimations.StartIdleAnim();
         }
 
         private void SendPlayerDataToController()
         {
-            _playerMovementController.SetMovementData(_playerData.PlayerMovementData);
+            playerMovement.SetMovementData(_playerData.PlayerMovementData);
         }
 
         private void OnInputDragged(HorizontalInputParams horizontalInput)
         {
-            _playerMovementController.SetSideForces(horizontalInput);
+            playerMovement.SetSideForces(horizontalInput);
         }
 
         private void OnInputReleased()
         {
-            _playerMovementController.SetSideForces(0);
+            playerMovement.SetSideForces(0);
         }
     }
 }

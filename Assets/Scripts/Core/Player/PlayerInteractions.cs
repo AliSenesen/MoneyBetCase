@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public class PlayerPhysicController : MonoBehaviour
+    public class PlayerInteractions : MonoBehaviour
     {
         private float _moneyYOffset = 0f;
         private void OnTriggerEnter(Collider other)

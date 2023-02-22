@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Controllers
 {
-    public class PlayerAnimationController : MonoBehaviour
+    public class PlayerAnimations : MonoBehaviour
     {
         [SerializeField] private Animator animator;
         [SerializeField] private AnimationStates animState;

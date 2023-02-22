@@ -3,9 +3,9 @@ using Datas.ValueObject;
 using UnityEngine;
 using Keys;
 
-namespace Controllers
+namespace Core.QuestionArea
 {
-    public class PlayerMovementController : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour
     { 
         [SerializeField] private Rigidbody Rb;
         private PlayerMovementData _data;

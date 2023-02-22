@@ -11,10 +11,6 @@ namespace Datas.ValueObject
         public PlayerMovementData PlayerMovementData;
     }
 
-    [Serializable]
-    public class PlayerMovementData
-    {
-        public float ForwardSpeed = 5;
-        public float SidewaysSpeed = 2;
-    }
+     
+   
 }

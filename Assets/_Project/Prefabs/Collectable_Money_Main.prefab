@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412d6107163e40ed8514efb7bdc76497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boxCollider: {fileID: 3588113284303772571}
   moneyAnim: {fileID: 6839213449590981336}
 --- !u!65 &3588113284303772571
 BoxCollider:

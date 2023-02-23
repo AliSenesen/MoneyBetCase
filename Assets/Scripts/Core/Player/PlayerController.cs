@@ -1,12 +1,13 @@
 ﻿using System;
 using Controllers;
+using Core.QuestionArea;
 using Datas.UnityObject;
 using Datas.ValueObject;
 using Keys;
 using UnityEngine;
 using Signals;
 
-namespace Controllers
+namespace Core.Player
 {
     public class PlayerController : MonoBehaviour
     {

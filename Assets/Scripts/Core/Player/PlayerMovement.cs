@@ -2,6 +2,7 @@
 using Datas.ValueObject;
 using UnityEngine;
 using Keys;
+using Managers;
 
 namespace Core.QuestionArea
 {
@@ -12,18 +13,23 @@ namespace Core.QuestionArea
         private bool _isReadyToMove;
         private float _horizontalInput;
         private float _clamp ;
+        
+        
+        private void Awake()
+        {
+            _isReadyToMove = false;
+        }
 
         private void FixedUpdate()
         {
-            Move();
-           /* if (_isReadyToMove)
+            if (_isReadyToMove)
             {
                 Move();
             }
             else
             {
                 Stop();
-            }*/
+            }
         }
         
         public void ActivateMovement()
@@ -34,6 +40,7 @@ namespace Core.QuestionArea
         public void DeactivateMovement()
         {
             _isReadyToMove = false;
+            Stop();
         }
 
         private void Move()
@@ -72,5 +79,7 @@ namespace Core.QuestionArea
                 _horizontalInput = 0;
             }
         }
+
+        
     }
 }

@@ -34,4 +34,6 @@ namespace Managers
         public bool IsLeftCorrect;
         public int BetOdd;
     }
+
+    
 }

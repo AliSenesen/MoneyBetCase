@@ -1,4 +1,5 @@
-﻿using Managers;
+﻿using System.Collections.Generic;
+using Managers;
 using TMPro;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Core.QuestionArea
         [SerializeField] private TextMeshPro leftAnswerTmp;
         [SerializeField] private TextMeshPro rightAnswerTmp;
         [SerializeField] private TextMeshPro betOddTmp;
+        
 
         private int _betOdd;
         private BetBelt _correctBelt;
@@ -33,9 +35,8 @@ namespace Core.QuestionArea
             {
                 _correctBelt = rightBelt;
             }
-            
-
         }
+        
 
         private void GetBetReward()
         {

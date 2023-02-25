@@ -21,7 +21,7 @@ namespace Core.QuestionArea
 
             money.transform.DORotateQuaternion(isLeft ? Quaternion.Euler(0, 0, 90) : Quaternion.Euler(0, 0, -90), .2f)
                 .OnComplete(() => LandOnBelt(money));
-            Debug.Log("SendMoneyToBank");
+            
 
 
         }
@@ -32,7 +32,7 @@ namespace Core.QuestionArea
                 .6f,.2f, false);
 
             money.transform.DORotate(Vector3.zero, 1);
-            Debug.Log("LandOnBelt");
+           
         }
     }
 }

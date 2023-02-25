@@ -14,7 +14,6 @@ namespace Controllers
         private void Awake()
         {
             StartIdleAnim();
-          // StartRunAnim();
         }
 
         private void OnEnable()

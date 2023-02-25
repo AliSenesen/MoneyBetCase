@@ -1,40 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using Controllers;
+using Core.QuestionArea;
 using Signals;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Managers
 {
     public class UIManager : MonoBehaviour
     {
         [SerializeField] private List<GameObject> panels;
-        private void OnEnable()
-        {
-            SubscribeEvents();
-        }
+        [SerializeField] private Animator animator;
+      
 
-        private void SubscribeEvents()
+        private void Start()
         {
-            CoreGameSignals.Instance.onPlay += OnPlay;
+            animator.SetTrigger("FIRST");
         }
-
-       
-
-        private void UnSubscribeEvents()
+        public void OnGameOpen()
         {
-            CoreGameSignals.Instance.onPlay -= OnPlay;
-        }
-
-        private void OnDisable()
-        {
-           UnSubscribeEvents();
-        }
-        
-        private void OnPlay()
-        {
+           CoreGameSignals.Instance.onPlay?.Invoke();
+           animator.SetTrigger("OUT");
+           panels[0].SetActive(false);
+          
             
         }
 
-        
+
     }
 }

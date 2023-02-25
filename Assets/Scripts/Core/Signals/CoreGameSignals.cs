@@ -6,8 +6,9 @@ namespace Signals
 {
     public class CoreGameSignals : MonoSingleton<CoreGameSignals>
     {
-        public UnityAction onPlay = delegate { };
-        public UnityAction onWin = delegate {  };
-        public UnityAction onFail = delegate {  };
+        
+        public UnityAction onPlay;
+        public UnityAction onWin;
+        public UnityAction onFail;
     }
 }

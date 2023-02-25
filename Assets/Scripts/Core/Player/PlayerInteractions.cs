@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Core.QuestionArea;
+using DG.Tweening;
 using Signals;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
@@ -28,6 +29,7 @@ namespace Controllers
                 money.Collect(transform,_moneyYOffset);
                 _moneyYOffset++;
                 _moneyList.Add(money);
+                
             }
 
             if (other.TryGetComponent(out BetBelt betBelt))
@@ -35,6 +37,10 @@ namespace Controllers
                 StartCoroutine(DropMoneyCoroutine(betBelt));
             }
 
+            if (other.TryGetComponent(out SignBoardsMove signBoards))
+            {
+                signBoards.MoveSignBoards();
+            }
            
         }
 

@@ -9,6 +9,7 @@ namespace Managers
     public class InputManager : MonoBehaviour
     {
         [SerializeField] private FixedJoystick fixedJoystick;
+        private bool isFirstTimeInputTaken;
 
         private void Update()
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Controllers;
 using Core.QuestionArea;
 using Datas.UnityObject;
@@ -35,6 +36,8 @@ namespace Core.Player
             InputSignals.Instance.onInputDragged += OnInputDragged;
             InputSignals.Instance.onInputReleased += OnInputReleased;
             PlayerSignals.Instance.onPlayerEnterFinishLine += OnDeactivateMovement;
+            PlayerSignals.Instance.playerXPos += ReturnXPos;
+            
         }
 
         private void UnSubscribeEvents()
@@ -43,12 +46,15 @@ namespace Core.Player
             InputSignals.Instance.onInputDragged -= OnInputDragged;
             InputSignals.Instance.onInputReleased -= OnInputReleased;
             PlayerSignals.Instance.onPlayerEnterFinishLine -= OnDeactivateMovement;
+            PlayerSignals.Instance.playerXPos -= ReturnXPos;
+            
         }
 
         private void OnDisable()
         {
             UnSubscribeEvents();
         }
+        private float ReturnXPos() => transform.position.x;
 
         private void OnPlay()
         {
@@ -56,6 +62,7 @@ namespace Core.Player
             
         }
 
+       
         private void OnDeactivateMovement()
         {
             playerMovement.DeactivateMovement();
@@ -76,5 +83,10 @@ namespace Core.Player
         {
             playerMovement.SetSideForces(0);
         }
+
+        
+
+
+
     }
 }

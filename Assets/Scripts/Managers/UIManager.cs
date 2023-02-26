@@ -12,7 +12,8 @@ namespace Managers
     {
         [SerializeField] private List<GameObject> panels;
         [SerializeField] private Animator animator;
-      
+
+        
 
         private void Start()
         {
@@ -23,9 +24,9 @@ namespace Managers
            CoreGameSignals.Instance.onPlay?.Invoke();
            animator.SetTrigger("OUT");
            panels[0].SetActive(false);
-          
-            
         }
+
+        
 
 
     }

@@ -31,7 +31,7 @@ namespace Managers
             _inGameCamPos = InGameCam.transform.position;
             _endGameCamPos = EndGameCam.transform.position;
             OnPlay();
-           // SetAllCameraToTarget();
+            SetAllCameraToTarget();
           
         }
 
@@ -44,17 +44,15 @@ namespace Managers
         private void SubscribeEvents()
         {
             CoreGameSignals.Instance.onPlay += OnPlay;
-            //  CoreGameSignals.Instance.onLevelSuccessful += OnLevelSuccessful;
-            //   CoreGameSignals.Instance.onCameraInitialized += OnCameraInitialized;
-            //    CoreGameSignals.Instance.onGameEnd += OnEndGameSideCamera;
+            PlayerSignals.Instance.onPlayerEnterFinishLine += OnPlayerEnterFinishLine;
+
         }
 
         private void UnsubscribeEvents()
         {
             CoreGameSignals.Instance.onPlay -= OnPlay;
-            //  CoreGameSignals.Instance.onLevelSuccessful -= OnLevelSuccessful;
-            // CoreGameSignals.Instance.onCameraInitialized -= OnCameraInitialized;
-            // CoreGameSignals.Instance.onGameEnd -= OnEndGameSideCamera;
+            PlayerSignals.Instance.onPlayerEnterFinishLine -= OnPlayerEnterFinishLine;
+            
         }
 
         private void OnDisable()
@@ -62,20 +60,10 @@ namespace Managers
             UnsubscribeEvents();
         }
 
-
-        private void OnCameraInitialized()
-        {
-            // PreStartCam.transform.position = _preStartCamPos;
-            InGameCam.transform.position = _inGameCamPos;
-            EndGameCam.transform.position = _endGameCamPos;
-            SetAllCameraToTarget();
-        }
-
         private void SetAllCameraToTarget()
         {
             SetCameraTargetToPlayer(InGameCam);
-
-            // EndGameCam.Follow = playerFinish;
+            
         }
 
         private void OnPlay()
@@ -83,7 +71,7 @@ namespace Managers
             animator.Play("InGameCam");
         }
           [Button]
-        private void Anan31()
+        private void OnPlayerEnterFinishLine()
         {
             animator.Play("EndGameCam");
         }
@@ -91,11 +79,6 @@ namespace Managers
         private void SetCameraTargetToPlayer(CinemachineVirtualCamera Camera)
         {
             Camera.Follow = GameObject.FindObjectOfType<PlayerController>().transform;
-        }
-
-        private void OnLevelSuccessful()
-        {
-            StartCoroutine(EndGameCamera(1));
         }
 
         private IEnumerator EndGameCamera(float delay)

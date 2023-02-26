@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Money
   - Area
+  - AreaEnd
   layers:
   - Default
   - TransparentFX

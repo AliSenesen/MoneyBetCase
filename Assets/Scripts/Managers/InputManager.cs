@@ -17,8 +17,7 @@ namespace Managers
         }
         private void MouseInputs()
         {
-            
-            {
+         
                 if (fixedJoystick.Horizontal > 0.1f || fixedJoystick.Horizontal < -0.1f)
                 {
                     InputSignals.Instance.onInputDragged?.Invoke(new HorizontalInputParams()
@@ -32,7 +31,7 @@ namespace Managers
                 {
                     InputSignals.Instance.onInputReleased?.Invoke();
                 }
-            }
+            
         }
     }
 }

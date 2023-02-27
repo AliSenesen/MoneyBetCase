@@ -63,6 +63,7 @@ namespace Managers
         private void SetAllCameraToTarget()
         {
             SetCameraTargetToPlayer(InGameCam);
+           
             
         }
 
@@ -74,11 +75,17 @@ namespace Managers
         private void OnPlayerEnterFinishLine()
         {
             animator.Play("EndGameCam");
+            SetCameraTargetToMoney(EndGameCam);
         }
 
         private void SetCameraTargetToPlayer(CinemachineVirtualCamera Camera)
         {
             Camera.Follow = GameObject.FindObjectOfType<PlayerController>().transform;
+        }
+
+        private void SetCameraTargetToMoney(CinemachineVirtualCamera Camera)
+        {
+            Camera.Follow = GameObject.FindObjectOfType<Money>().transform;
         }
 
         private IEnumerator EndGameCamera(float delay)

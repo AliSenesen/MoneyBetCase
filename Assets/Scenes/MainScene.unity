@@ -3912,26 +3912,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1472110016}
     m_Modifications:
-    - target: {fileID: 2038930976, guid: 2cf673749c5af1a4ab0d0a2821af1f86, type: 3}
-      propertyPath: m_Size.y
-      value: 1.9266851
-      objectReference: {fileID: 0}
-    - target: {fileID: 2038930976, guid: 2cf673749c5af1a4ab0d0a2821af1f86, type: 3}
-      propertyPath: m_Size.z
-      value: 5.5674677
-      objectReference: {fileID: 0}
-    - target: {fileID: 2038930976, guid: 2cf673749c5af1a4ab0d0a2821af1f86, type: 3}
-      propertyPath: m_Center.y
-      value: -3.2667415
-      objectReference: {fileID: 0}
-    - target: {fileID: 2038930976, guid: 2cf673749c5af1a4ab0d0a2821af1f86, type: 3}
-      propertyPath: m_Center.z
-      value: 2.6837342
-      objectReference: {fileID: 0}
-    - target: {fileID: 2038930976, guid: 2cf673749c5af1a4ab0d0a2821af1f86, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1304162073524353432, guid: 2cf673749c5af1a4ab0d0a2821af1f86, type: 3}
       propertyPath: m_Name
       value: End_Game
@@ -3979,6 +3959,14 @@ PrefabInstance:
     - target: {fileID: 1304162073524353433, guid: 2cf673749c5af1a4ab0d0a2821af1f86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734680073773596149, guid: 2cf673749c5af1a4ab0d0a2821af1f86, type: 3}
+      propertyPath: m_Size.x
+      value: 16.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3734680073773596149, guid: 2cf673749c5af1a4ab0d0a2821af1f86, type: 3}
+      propertyPath: m_Center.z
+      value: -2.26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cf673749c5af1a4ab0d0a2821af1f86, type: 3}

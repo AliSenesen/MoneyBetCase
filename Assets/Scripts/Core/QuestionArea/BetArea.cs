@@ -40,7 +40,6 @@ namespace Core.QuestionArea
 
         public int GetBetReward()
         {
-            Debug.Log(_betOdd);
            return _correctBelt.TakeRewardAmount()* _betOdd;
         }
     }

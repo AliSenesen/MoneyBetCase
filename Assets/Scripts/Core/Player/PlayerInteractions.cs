@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core;
 using Core.QuestionArea;
 using DG.Tweening;
 using Scripts.Core.QuestionArea;
@@ -96,9 +97,17 @@ namespace Controllers
                 signBoards.MoveSignBoards();
             }
 
-            if (other.CompareTag("Finish"))
+            if (other.TryGetComponent(out MiniGameArea miniGameArea))
             {
                 PlayerSignals.Instance.onPlayerEnterFinishLine?.Invoke();
+                if (_moneyList.Count > 0)
+                {
+                    StartCoroutine(DropMoneyCoroutineEndGame(miniGameArea));
+                }
+                else
+                {
+                    StopCoroutine(DropMoneyCoroutineEndGame(miniGameArea));
+                }
             }
         }
 
@@ -154,7 +163,23 @@ namespace Controllers
             
         }
 
-        //private IEnumerator DropMoneyCoroutineEndGame()
+        private IEnumerator DropMoneyCoroutineEndGame(MiniGameArea miniGameArea)
+        {
+            while (true)
+            {
+                if (_moneyList.IsNullOrEmpty())
+                {
+                    StopCoroutine(DropMoneyCoroutineEndGame(miniGameArea));
+                }
+
+                var tempMoney = _moneyList[_moneyList.Count - 1];
+                miniGameArea.SendMoneyToGround(tempMoney);
+                _moneyList.Remove(tempMoney);
+                _moneyYOffset -= 0.5f;
+                yield return new WaitForSeconds(moneyDropDelay);
+            }
+            
+        }
         
     }
 }

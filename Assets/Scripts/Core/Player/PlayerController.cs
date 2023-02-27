@@ -67,6 +67,7 @@ namespace Core.Player
         {
             playerMovement.DeactivateMovement();
             playerAnimations.StartIdleAnim();
+            
         }
 
         private void SendPlayerDataToController()

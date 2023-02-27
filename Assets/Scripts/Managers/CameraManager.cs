@@ -3,6 +3,7 @@ using System.Collections;
 using Cinemachine;
 using Controllers;
 using Core.Player;
+using Enums;
 using Signals;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -45,6 +46,7 @@ namespace Managers
         {
             CoreGameSignals.Instance.onPlay += OnPlay;
             PlayerSignals.Instance.onPlayerEnterFinishLine += OnPlayerEnterFinishLine;
+            PlayerSignals.Instance.onGetEndGameCamToMoney += OnGetEndGameCamToMoney;
 
         }
 
@@ -52,8 +54,11 @@ namespace Managers
         {
             CoreGameSignals.Instance.onPlay -= OnPlay;
             PlayerSignals.Instance.onPlayerEnterFinishLine -= OnPlayerEnterFinishLine;
+            PlayerSignals.Instance.onGetEndGameCamToMoney -= OnGetEndGameCamToMoney;
             
         }
+
+       
 
         private void OnDisable()
         {
@@ -63,19 +68,22 @@ namespace Managers
         private void SetAllCameraToTarget()
         {
             SetCameraTargetToPlayer(InGameCam);
-           
-            
         }
 
         private void OnPlay()
         {
-            animator.Play("InGameCam");
+            animator.Play(CameraStates.InGameCam.ToString());
         }
           [Button]
         private void OnPlayerEnterFinishLine()
         {
-            animator.Play("EndGameCam");
-            SetCameraTargetToMoney(EndGameCam);
+            animator.Play(CameraStates.EndGameCam.ToString());
+           
+        }
+        private void OnGetEndGameCamToMoney(Transform moneyTransform)
+        {
+            EndGameCam.Follow = moneyTransform;
+
         }
 
         private void SetCameraTargetToPlayer(CinemachineVirtualCamera Camera)
@@ -83,15 +91,5 @@ namespace Managers
             Camera.Follow = GameObject.FindObjectOfType<PlayerController>().transform;
         }
 
-        private void SetCameraTargetToMoney(CinemachineVirtualCamera Camera)
-        {
-            Camera.Follow = GameObject.FindObjectOfType<Money>().transform;
-        }
-
-        private IEnumerator EndGameCamera(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            animator.Play("EndGameCam");
-        }
     }
 }

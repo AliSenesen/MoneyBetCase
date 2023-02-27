@@ -69,10 +69,10 @@ namespace Controllers
                 float desiredAngle = angleCurve.Evaluate(curveConstant) * maxAngle * playerPosRate;
                 Quaternion currentAngle = _moneyList[i].transform.rotation;
                 _moneyList[i].transform.rotation = Quaternion.Euler(currentAngle.x, currentAngle.y, desiredAngle);
-                
+
                 Vector3 currentPos = _moneyList[i].transform.localPosition;
-               float desiredPosition = ((i*i)*moneyXMultiplier) * maxRoadXValue * -playerPosRate;
-                _moneyList[i].transform.localPosition = new Vector3( desiredPosition, currentPos.y, currentPos.z);
+                float desiredPosition = ((i * i) * moneyXMultiplier) * maxRoadXValue * -playerPosRate;
+                _moneyList[i].transform.localPosition = new Vector3(desiredPosition, currentPos.y, currentPos.z);
             }
         }
 
@@ -83,14 +83,13 @@ namespace Controllers
 
         private void OnTriggerEnter(Collider other)
         {
-             AddMoney(other.gameObject);
+            AddMoney(other.gameObject);
 
             if (other.TryGetComponent(out BetBelt betBelt))
             {
-                 StartCoroutine(DropMoneyCoroutine(betBelt));
-                
+                StartCoroutine(DropMoneyCoroutine(betBelt));
             }
-            
+
 
             if (other.TryGetComponent(out SignBoardsMove signBoards))
             {
@@ -120,8 +119,9 @@ namespace Controllers
 
             if (other.TryGetComponent(out BetArea betArea))
             {
-               var rewardAmount = betArea.GetBetReward();
-               TakeReward(rewardAmount);
+                var rewardAmount = betArea.GetBetReward();
+                TakeReward(rewardAmount);
+                
             }
         }
 
@@ -129,9 +129,8 @@ namespace Controllers
         {
             for (int i = 0; i < moneyAmount; i++)
             {
-                GameObject rewardMoney =  Instantiate(moneyPrefab);
+                GameObject rewardMoney = Instantiate(moneyPrefab);
                 AddMoney(rewardMoney);
-                
             }
         }
 
@@ -157,10 +156,9 @@ namespace Controllers
                 var tempMoney = _moneyList[_moneyList.Count - 1];
                 belt.SendMoneyToBank(tempMoney);
                 _moneyList.Remove(tempMoney);
-                _moneyYOffset-= 0.5f;
+                _moneyYOffset -= 0.5f;
                 yield return new WaitForSeconds(moneyDropDelay);
             }
-            
         }
 
         private IEnumerator DropMoneyCoroutineEndGame(MiniGameArea miniGameArea)
@@ -169,7 +167,7 @@ namespace Controllers
             {
                 if (_moneyList.IsNullOrEmpty())
                 {
-                    StopCoroutine(DropMoneyCoroutineEndGame(miniGameArea));
+                    break;
                 }
 
                 var tempMoney = _moneyList[_moneyList.Count - 1];
@@ -178,8 +176,6 @@ namespace Controllers
                 _moneyYOffset -= 0.5f;
                 yield return new WaitForSeconds(moneyDropDelay);
             }
-            
         }
-        
     }
 }
